@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}出欠登録{% endblock %}
+{% block content %}
+<div class="card shadow-sm mx-auto" style="max-width:480px;">
+  <div class="card-body">
+    <h2 class="card-title mb-4 text-center">出欠登録</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        {{ form.student_class.label_tag }}
+        {{ form.student_class }}
+      </div>
+      <div class="mb-3">
+        {{ form.name.label_tag }}
+        {{ form.name }}
+      </div>
+      <div class="mb-3">
+        {{ form.status.label_tag }}
+        {{ form.status }}
+      </div>
+      {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
+      <button type="submit" class="btn btn-primary w-100">送信</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
